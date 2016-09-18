@@ -1,0 +1,6 @@
+<?
+  $pg_host = "localhost";
+  $pg_user = "osm_www";
+  $pg_pass = "XXXXXXX";
+  $pg_base = "osm_www";
+?>

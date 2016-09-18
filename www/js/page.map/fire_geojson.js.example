@@ -1,0 +1,929 @@
+fire_test = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.331,
+          44.3524
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804244,
+        "Sample": 431,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 51,
+        "Power": 20.097263336181641,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 0,
+        "Town": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.964,
+          42.8769
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804230,
+        "Sample": 417,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 50,
+        "Power": 13.19328498840332,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205663,
+        "FireType": 4,
+        "Town": "Голубовка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.351,
+          44.3595
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804158,
+        "Sample": 1167,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 79,
+        "Power": 87.608955383300781,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": null,
+        "FireType": 0,
+        "Town": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.643,
+          45.7707
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804250,
+        "Sample": 326,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 66,
+        "Power": 43.036651611328125,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Филино"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.279,
+          43.4279
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804167,
+        "Sample": 1182,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 72,
+        "Power": 65.507972717285156,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": 41206317,
+        "FireType": 4,
+        "Town": "Кролевцы"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.625,
+          45.8022
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804127,
+        "Sample": 1186,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 79,
+        "Power": 95.7370834350586,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.988,
+          44.7684
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804247,
+        "Sample": 381,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 57,
+        "Power": 21.745792388916016,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "ж/д ст Дроздов"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.961,
+          42.8865
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804233,
+        "Sample": 417,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 60,
+        "Power": 15.844643592834473,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205663,
+        "FireType": 4,
+        "Town": "Голубовка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.65099999999998,
+          42.9194
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804236,
+        "Sample": 438,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 93,
+        "Power": 74.432708740234375,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205665,
+        "FireType": 4,
+        "Town": "Душкино"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.464,
+          43.9796
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804242,
+        "Sample": 254,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 78,
+        "Power": 57.176685333251953,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Веселый Яр"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.484,
+          43.981399999999994
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804241,
+        "Sample": 253,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 81,
+        "Power": 65.2248306274414,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Веселый Яр"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.938,
+          43.722799999999992
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804165,
+        "Sample": 1163,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 64,
+        "Power": 49.429985046386719,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Утесное"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.259,
+          45.4566
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804248,
+        "Sample": 297,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 65,
+        "Power": 41.210308074951172,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Вербное"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.019,
+          42.8518
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804228,
+        "Sample": 414,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 34,
+        "Power": 13.893275260925293,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205663,
+        "FireType": 4,
+        "Town": "Голубовка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.9,
+          45.967899999999993
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804259,
+        "Sample": 309,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 29,
+        "Power": 24.390453338623047,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41206458,
+        "FireType": 4,
+        "Town": "Речное"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.617,
+          45.7757
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804253,
+        "Sample": 327,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 56,
+        "Power": 91.470405578613281,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.042,
+          46.1966
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804113,
+        "Sample": 1193,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 41,
+        "Power": 50.668949127197266,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Совхоз Пожарский"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.613,
+          45.7964
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804256,
+        "Sample": 327,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 66,
+        "Power": 54.3078727722168,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.083,
+          42.982299999999995
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804239,
+        "Sample": 407,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 81,
+        "Power": 37.978302001953125,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "ж/д рзд 151-й км"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.685,
+          42.8941
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804234,
+        "Sample": 436,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 32,
+        "Power": 12.963991165161133,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205665,
+        "FireType": 4,
+        "Town": "Душкино"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.69899999999998,
+          44.453
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804245,
+        "Sample": 405,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 64,
+        "Power": 22.507638931274414,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Малые Ключи"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.613,
+          45.7892
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804130,
+        "Sample": 1186,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 52,
+        "Power": 58.026473999023438,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.56,
+          44.181
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804243,
+        "Sample": 247,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 76,
+        "Power": 68.693656921386719,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Зеркальное"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.626,
+          45.768999999999991
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804251,
+        "Sample": 327,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 63,
+        "Power": 49.602367401123047,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.164,
+          42.9091
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804231,
+        "Sample": 403,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 57,
+        "Power": 17.384368896484375,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 0,
+        "Town": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.083,
+          45.9857
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804257,
+        "Sample": 299,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 88,
+        "Power": 81.17303466796875,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Гоголевка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.163,
+          45.717699999999994
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804125,
+        "Sample": 1206,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 81,
+        "Power": 121.74269866943359,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Ударное"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.976,
+          42.8881
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804232,
+        "Sample": 416,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 93,
+        "Power": 78.1434097290039,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205663,
+        "FireType": 4,
+        "Town": "Голубовка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.643,
+          42.923
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804238,
+        "Sample": 438,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 69,
+        "Power": 20.316244125366211,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205665,
+        "FireType": 4,
+        "Town": "Душкино"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.633,
+          45.7877
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804254,
+        "Sample": 326,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 94,
+        "Power": 162.83102416992187,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.318,
+          45.5789
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804249,
+        "Sample": 292,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 72,
+        "Power": 42.673294067382813,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41206309,
+        "FireType": 4,
+        "Town": "Ясная Поляна"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.665,
+          42.9211
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804235,
+        "Sample": 437,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 85,
+        "Power": 45.1390266418457,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205665,
+        "FireType": 4,
+        "Town": "Душкино"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.657,
+          42.9246
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804237,
+        "Sample": 437,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 87,
+        "Power": 51.699905395507813,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205665,
+        "FireType": 4,
+        "Town": "Душкино"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.19,
+          45.7113
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804126,
+        "Sample": 1207,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 89,
+        "Power": 174.21488952636719,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Ударное"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.63499999999996,
+          45.777399999999993
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804252,
+        "Sample": 326,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 94,
+        "Power": 193.01252746582031,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.978,
+          42.8785
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804229,
+        "Sample": 416,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 93,
+        "Power": 73.705154418945313,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205663,
+        "FireType": 4,
+        "Town": "Голубовка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.07499999999996,
+          45.9902
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804260,
+        "Sample": 299,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 86,
+        "Power": 80.05987548828125,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Гоголевка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.286,
+          43.4293
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804166,
+        "Sample": 1182,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 62,
+        "Power": 51.911109924316406,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": 41206317,
+        "FireType": 4,
+        "Town": "Суражевка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.064,
+          45.9839
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804258,
+        "Sample": 300,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 75,
+        "Power": 59.876079559326172,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Гоголевка"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.615,
+          45.7861
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804255,
+        "Sample": 327,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 80,
+        "Power": 99.58770751953125,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.62,
+          45.7901
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804128,
+        "Sample": 1186,
+        "DataSource": "IRK",
+        "Platform": "TERRA",
+        "Confidence": 45,
+        "Power": 48.041057586669922,
+        "DateTime": "2015-04-12 02:38:54",
+        "ClusterID": 41205671,
+        "FireType": 4,
+        "Town": "Кольцевой"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.376,
+          43.3168
+        ]
+      },
+      "properties": {
+        "HotSpotID": 1804240,
+        "Sample": 449,
+        "DataSource": "IRK",
+        "Platform": "AQUA",
+        "Confidence": 47,
+        "Power": 15.178426742553711,
+        "DateTime": "2015-04-12 04:26:55",
+        "ClusterID": null,
+        "FireType": 4,
+        "Town": "Шкотово"
+      }
+    }
+  ]
+}

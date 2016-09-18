@@ -1,0 +1,397 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
+import cgi, json, re, psycopg2, psycopg2.extras
+import db_config
+import api_config as conf
+import sys
+
+if conf.isdebug:
+  import datetime
+
+console=False
+
+def find_disconnectors_in_lines_by_line_name(line_name,result):
+  if conf.isdebug:
+    print("DEBUG 1")
+  way_id="0"
+  conn = psycopg2.connect(host=db_config.search_db_host, database=db_config.search_db_database, user=db_config.search_db_user, password=db_config.search_db_password)
+  cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+  try:
+    sql="""
+    SELECT name,ways_table_name
+    FROM lines
+    WHERE 
+    name ilike ('%%%(search)s%%')
+    """ % {"search":line_name}
+    cur.execute(sql)
+    lines = cur.fetchall()
+  except:
+    print ("I am unable search data (lines) in db")
+    sys.exit(1)
+  for line in lines:
+    if conf.isdebug:
+      print("DEBUG: process LINE: '%s'" % line["name"])
+    ways_table_name=line["ways_table_name"]
+    # берём все пути (way) для каждой линии:
+    try:
+      sql="""
+      SELECT way_id,nodes_table_name
+      FROM %(ways_table_name)s
+      """ % {"ways_table_name":ways_table_name}
+      cur.execute(sql)
+      nodes_tables = cur.fetchall()
+    except:
+      print ("I am unable search data (nodes_table_name) in '%s'" % ways_table_name)
+      sys.exit(1)
+
+    # Берём точки каждого пути (way):
+    for node_table in nodes_tables:
+      if conf.isdebug:
+        print("DEBUG: process: WAY'%s'" % node_table["nodes_table_name"])
+      nodes_table_name=node_table["nodes_table_name"]
+      way_id=node_table["way_id"]
+
+      # Берём точки линии:
+      try:
+        sql="""
+        SELECT node_id,name,disconnector_type,lat,lon
+        FROM %(nodes_table_name)s
+        WHERE
+        not disconnector_type='no' and
+        not disconnector_type=''
+        """ % {"nodes_table_name":nodes_table_name}
+        cur.execute(sql)
+        nodes = cur.fetchall()
+      except:
+        print ("I am unable get lat,lon from first record from %s" % nodes_table_name)
+        sys.exit(1)
+      for node in nodes:
+        if conf.isdebug:
+          print("DEBUG: process: NODE'%s'" % node["name"])
+        item={}
+        item["id"]=node["node_id"]
+        item["class"]="power_tower"
+        #if unicode(str(node["name"]),'utf8') == "": 
+        if len(node["name"])==0:
+          # Не добавляем имя опоры:
+          item["name"]=unicode(str(line["name"]),'utf8') + unicode(str(' (разъединитель)'),'utf8')
+        else:
+          item["name"]=unicode(str(line["name"]),'utf8') + ", " + unicode(str(node["name"]),'utf8') + unicode(str(' (разъеденитель)'),'utf8')
+        item["class_ru"]=unicode(str("объекты дрск"),'utf8')
+        item["osm_id"]="n%s"%node["node_id"]
+        item["lon"]=float(node["lon"])/10000000
+        item["lat"]=float(node["lat"])/10000000
+        result.append(item)  
+
+  conn.close()
+  return result
+
+def find_in_lines_by_line_name_and_tower_name(line_name,tower_name,result):
+  nodes_table_name=""
+  conn = psycopg2.connect(host=db_config.search_db_host, database=db_config.search_db_database, user=db_config.search_db_user, password=db_config.search_db_password)
+  cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+  try:
+    sql="""
+    SELECT name,ways_table_name
+    FROM lines
+    WHERE 
+    name ilike ('%%%(search)s%%')
+    """ % {"search":line_name}
+    cur.execute(sql)
+    lines = cur.fetchall()
+  except:
+    print ("I am unable search data (lines) in db")
+    sys.exit(1)
+  for line in lines:
+    ways_table_name=line["ways_table_name"]
+    # берём все пути (way) для каждой линии:
+    try:
+      sql="""
+      SELECT way_id,nodes_table_name
+      FROM %(ways_table_name)s
+      """ % {"ways_table_name":ways_table_name}
+      cur.execute(sql)
+      nodes_tables = cur.fetchall()
+    except:
+      print ("I am unable search data (nodes_table_name) in '%s'" % ways_table_name)
+      sys.exit(1)
+
+    # Берём точки каждого пути (way):
+    for node_table in nodes_tables:
+      nodes_table_name=node_table["nodes_table_name"]
+      way_id=node_table["way_id"]
+      try:
+        sql="""
+        SELECT node_id,name,lat,lon
+        FROM %(nodes_table_name)s
+        WHERE
+        name ilike ('%%%(tower_name)s%%')
+        """ % {"nodes_table_name":nodes_table_name, "tower_name":tower_name}
+        cur.execute(sql)
+        nodes = cur.fetchall()
+      except:
+        print ("I am unable get lat,lon from first record from %s" % nodes_table_name)
+        sys.exit(1)
+      # Для каждой найденной опоры:
+      for node in nodes:
+        item={}
+        item["id"]=node["node_id"]
+        item["class"]="power_tower"
+        #if unicode(str(node["name"]),'utf8') == "": 
+        if len(node["name"])==0:
+          # Не добавляем имя опоры:
+          item["name"]=unicode(str(line["name"]),'utf8')
+        else:
+          item["name"]=unicode(str(line["name"]),'utf8') + ", " + unicode(str(node["name"]),'utf8')  
+        item["class_ru"]=unicode(str("объекты дрск"),'utf8')
+        item["osm_id"]="n%s"%node["node_id"]
+        item["lon"]=float(node["lon"])/10000000
+        item["lat"]=float(node["lat"])/10000000
+        result.append(item)  
+
+  conn.close()
+  return result
+
+def find_in_nodes (search_text,result):
+  conn = psycopg2.connect(host=db_config.search_db_host, database=db_config.search_db_database, user=db_config.search_db_user, password=db_config.search_db_password)
+  cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+  try:
+    sql="""
+    SELECT node_id,name,lat,lon
+    FROM nodes
+    WHERE 
+    name ilike ('%%%(search)s%%')
+    """ % {"search":search_text}
+    cur.execute(sql)
+    data = cur.fetchall()
+  except:
+    print ("I am unable search data (nodes) in db")
+    sys.exit(1)
+  for poi in data:
+    item={}
+    item["id"]=poi["node_id"]
+    item["class"]="power_station"
+    item["name"]=unicode(str(poi["name"]),'utf8')
+    item["class_ru"]=unicode(str("объекты дрск"),'utf8')
+    item["osm_id"]="n%s"%poi["node_id"]
+    item["lon"]=float(poi["lon"])/10000000
+    item["lat"]=float(poi["lat"])/10000000
+    result.append(item)  
+  conn.close()
+  return result
+
+def find_in_lines_only_by_name (search_text,result):
+  way_id="0"
+  nodes_table_name=""
+  conn = psycopg2.connect(host=db_config.search_db_host, database=db_config.search_db_database, user=db_config.search_db_user, password=db_config.search_db_password)
+  cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+  try:
+    sql="""
+    SELECT name,ways_table_name
+    FROM lines
+    WHERE 
+    name ilike ('%%%(search)s%%')
+    """ % {"search":search_text}
+    cur.execute(sql)
+    lines = cur.fetchall()
+  except:
+    print ("I am unable search data (lines) in db")
+    sys.exit(1)
+  for line in lines:
+    item={}
+    item["class"]="power_line"
+    item["name"]=unicode(str(line["name"]),'utf8')
+    item["class_ru"]=unicode(str("объекты дрск"),'utf8')
+
+    ways_table_name=line["ways_table_name"]
+
+    # Берём первый путь (way) линии:
+    try:
+      sql="""
+      SELECT way_id,nodes_table_name
+      FROM %(ways_table_name)s
+      limit 1
+      """ % {"ways_table_name":ways_table_name}
+      cur.execute(sql)
+      way = cur.fetchone()
+      nodes_table_name=way["nodes_table_name"]
+      way_id=way["way_id"]
+    except:
+      print ("I am unable get nodes_table_name from %s" % ways_table_name)
+      sys.exit(1)
+
+    item["osm_id"]="n%s"%way_id
+    item["id"]=way_id
+
+    # Берём первую точку линии:
+    try:
+      sql="""
+      SELECT node_id,name,lat,lon
+      FROM %(nodes_table_name)s
+      limit 1
+      """ % {"nodes_table_name":nodes_table_name}
+      cur.execute(sql)
+      data = cur.fetchone()
+    except:
+      print ("I am unable get lat,lon from first record from %s" % nodes_table_name)
+      sys.exit(1)
+  
+    item["lon"]=float(data["lon"])/10000000
+    item["lat"]=float(data["lat"])/10000000
+    # Добавляем имя опоры, если оно не пустое:
+    if len(data["name"])!=0:
+      item["name"]=item["name"] + ", " + unicode(str(data["name"]),'utf8')
+    result.append(item)  
+  conn.close()
+  return result
+
+
+def main():
+
+
+#==== DEBUG ===============
+  if console:
+    print ("DEBUG: start")
+    search_text="голдобин,разъед"
+    result=[]
+
+    result=find_in_nodes(search_text,result) 
+    result=find_in_lines_only_by_name(search_text,result)
+
+# Проверяем на составной запрос:
+    hard_search_list=search_text.split(',')
+    hard_search_list_len=len(hard_search_list)
+    if hard_search_list_len > 1:
+      # Составной запрос (в запросе есть запятая, как разделитель полей)
+      tower_name=hard_search_list[hard_search_list_len-1].strip()
+      line_name=""
+      for index in range(0,hard_search_list_len-1):
+        line_name+=hard_search_list[index]
+      if len(line_name) > 0 and len(tower_name) > 0:
+        result=find_in_lines_by_line_name_and_tower_name(line_name.strip(),tower_name,result)
+        if unicode("разъед",'utf8') in unicode(tower_name.lower(),'utf8'):
+# Ищем разъеденители на линии:
+          result=find_disconnectors_in_lines_by_line_name(line_name,result)
+    print json.dumps(result)
+    print ("DEBUG: stop")
+    return
+#====== DEBUG =============
+
+
+  output={}
+  output['ver']='0.7'
+  if conf.isdebug:
+    output['debug']={}
+    output['debug']['test-timer']=[]
+    output['debug']['test-timer'].append(str(datetime.datetime.now())+' - 1')
+
+
+  getvalues=cgi.FieldStorage()
+  get={}
+  get['outCallback'] = getvalues.getfirst('callback','')
+
+  print "Content-type: text/javascript; Charset=Utf-8\nAccess-Control-Allow-Origin: *\n" # debug
+  #print "Content-type: application/json; Charset=Utf-8\nAccess-Control-Allow-Origin: *\n" # production
+
+  get['q'] = unicode(getvalues.getfirst("q",""),'utf8') # строка поиска
+  get['lat'] = float(getvalues.getfirst("lat","0")) # координаты куда смотрит пользователь
+  get['lon'] = float(getvalues.getfirst("lon","0")) # координаты куда смотрит пользователь
+  get['asis'] = bool(getvalues.getfirst("asis","1")) # не экранировать спецсимволы html при выводе результатов
+  get['nolimit'] = bool(getvalues.getfirst("nolimit","")) # не ограничивать количество выводимых результатов поиска
+  get['cnt'] = int(getvalues.getfirst("cnt","12")) # число выводимых результатов поиска
+  get['st'] = unicode(getvalues.getfirst("st","")) # [all / addr / poi]  где ищем
+  if get['st'] == "":
+    get['st'] = unicode(getvalues.getfirst("stype","all")) # all / addr / poi (поддержка старого названия)
+  output['in'] = get.copy()
+
+  if not get['q']:
+    output['error']="no query words, 'q' is empty"
+    return
+
+  output['search'] = get['q']
+  if not get['asis']: # экранирование html спецсимволов
+    output['search'] = output['search'].replace('&','&amp;')
+    output['search'] = output['search'].replace('\"',"&quot;")
+    output['search'] = output['search'].replace('\'','&#039;')
+    output['search'] = output['search'].replace('<','&lt;')
+    output['search'] = output['search'].replace('>','&gt;')
+
+  if get['st'] == 'all':
+    get['sphinxindex'] = conf.sphinx_index_addr + ' , ' + conf.sphinx_index_poi
+  elif get['st'] == 'addr':
+    get['sphinxindex'] = conf.sphinx_index_addr
+  elif get['st'] == 'poi':
+    get['sphinxindex'] = conf.sphinx_index_poi
+  else:
+    output['error']="no query words, 'st' is 'all' or 'addr' or 'poi'"
+    return
+
+  # Ищем в БД
+  output['find']=False
+  output["matches"]=[]
+
+  search_text=get['q']
+  result=[]
+
+  result=find_in_nodes(search_text,result) 
+  result=find_in_lines_only_by_name(search_text,result)
+
+  # Проверяем на составной запрос:
+  hard_search_list=search_text.split(',')
+  hard_search_list_len=len(hard_search_list)
+  if hard_search_list_len > 1:
+    # Составной запрос (в запросе есть запятая, как разделитель полей)
+  # Заодно убираем пробелы по краям:
+    tower_name=hard_search_list[hard_search_list_len-1].strip()
+    line_name=""
+    for index in range(0,hard_search_list_len-1):
+      line_name+=hard_search_list[index]
+  # убираем пробелы по краям:
+    line_name=line_name.strip()
+    if len(line_name) > 0 and len(tower_name) > 0:
+      result=find_in_lines_by_line_name_and_tower_name(line_name,tower_name,result)
+      if unicode(str("разъед"),'utf8') in tower_name.lower():
+# Ищем разъеденители на линии:
+        result=find_disconnectors_in_lines_by_line_name(line_name,result)
+
+  if len(result) == 0:
+    output['find']=False
+  else:
+    output['find']=True
+    # userPos:
+    count=1
+    for res in result:
+      # matches:
+      item={}
+      item["lon"]=res["lon"]
+      item["lat"]=res["lat"]
+      item["name"]=res["name"]
+      item["display_name"]=res["name"]
+      item["full_name"]=""
+      item["id"]=res["id"]
+      item["osm_id"]=res["osm_id"]
+      item["class"]=res["class"]
+
+      item["street_id"]=0
+      item["village_id"]=0
+      item["city_id"]=0
+      item["weight"]=2000
+      item["addr_type_id"]=70
+      item["country_id"]=0
+      item["district_id"]=0
+      item["this_poi"]=0
+      item["addr_type"]="poi"
+      item["operator"]=""
+      item["@geodist"]=7986888.5
+      item["region_id"]=68688198
+
+      output["matches"].append(item)
+      count+=1
+      if count > get["cnt"]:
+        break
+
+  print json.dumps(output)
+
+if __name__ == '__main__':
+  main()

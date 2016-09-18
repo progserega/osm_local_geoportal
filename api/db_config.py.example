@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#
+# DATABASE CONFIGURATION
+#
+addr_host = "localhost"
+addr_database = "stapio_gis"
+addr_user = "openstreetmap"
+addr_password = "XXXXXXXX"
+
+site_host = "localhost"
+site_database = "osm_www"
+site_user = "openstreetmap"
+site_password = "XXXXXXXX"
+
+search_db_host = "localhost"
+search_db_database = "osm_www_search"
+search_db_user = "openstreetmap"
+search_db_password = "XXXXXXXX"
+

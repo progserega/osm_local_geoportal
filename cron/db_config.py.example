@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+db_search_host="db.rs.int"
+db_search_name="osm_www_search"
+db_search_user="osm_www_search"
+db_search_passwd="XXXXXX"
+
+db_osm_host="db.rs.int"
+db_osm_name="drsk_dev_osm"
+db_osm_user="osm_read_only"
+db_osm_passwd="XXXXXXX"
+
+#debug=True
+debug=False
+
